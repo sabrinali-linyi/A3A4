@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+package a3;
+
+message Book {
+  optional int32 inventory_number = 1;
+
+  enum status {
+    AVAILABLE = 0;
+    TAKEN = 1;
+  }
+
+  message Item {
+    oneof items {
+        Book book = 1;
+    }
+  }
+}

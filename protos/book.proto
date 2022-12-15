@@ -1,0 +1,34 @@
+syntax = "proto2";
+
+package a3;
+
+// The inventory service definition
+service InventoryService {
+  // create a book given ISBN
+  rpc CreateBook(Book) returns (CreateBookResponse) {}
+  // get the book given ISBN
+  rpc GetBook(GetBookRequest) returns (Book) {}
+}
+
+enum Genre {
+  FICTION = 0;
+  MYSTERY = 1;
+  POETRY = 2;
+  HISTORY = 3;
+}
+
+message Book {
+  optional string ISBN = 1;
+  optional string title = 2;
+  optional string author = 3;
+  optional int32 publishing_year = 4;
+  optional Genre genre = 5;
+}
+
+message GetBookRequest {
+  optional string ISBN = 1;
+}
+
+message CreateBookResponse {
+  optional string Message = 1;
+}
